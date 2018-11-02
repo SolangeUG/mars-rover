@@ -43,7 +43,7 @@ public class MarsRoverShould {
         }
 
         @Test
-        public void with_left_command_turn_right() {
+        public void with_left_command_turn_left() {
             rover.move("L");
             assertThat(rover.isDirection(Direction.NORTH)).isTrue();
         }
