@@ -17,4 +17,13 @@ class WestDirectionShould {
         WestDirection west = new WestDirection();
         assertThat(west.moveRight()).isEqualTo(new NorthDirection());
     }
+
+    @Test
+    void decrement_x_coordinate_when_asked_to_move_forward() {
+        Coordinate coordinate = new Coordinate(2, 2);
+        WestDirection west = new WestDirection();
+
+        Coordinate expected = new Coordinate(1, 2);
+        assertThat(west.moveForward(coordinate)).isEqualTo(expected);
+    }
 }

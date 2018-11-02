@@ -10,6 +10,8 @@ public abstract class Direction {
 
     public abstract Direction moveLeft();
 
+    public abstract Coordinate moveForward(Coordinate coordinate);
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

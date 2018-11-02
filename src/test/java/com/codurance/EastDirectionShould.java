@@ -17,4 +17,13 @@ class EastDirectionShould {
         EastDirection east = new EastDirection();
         assertThat(east.moveRight()).isEqualTo(new SouthDirection());
     }
+
+    @Test
+    void increment_x_coordinate_when_asked_to_move_straight() {
+        Coordinate coordinate = new Coordinate(2, 2);
+        EastDirection east = new EastDirection();
+
+        Coordinate expected = new Coordinate(3, 2);
+        assertThat(east.moveForward(coordinate)).isEqualTo(expected);
+    }
 }

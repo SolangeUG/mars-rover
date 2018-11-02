@@ -11,4 +11,9 @@ public class NorthDirection extends Direction {
     public Direction moveLeft() {
         return new WestDirection();
     }
+
+    @Override
+    public Coordinate moveForward(Coordinate coordinate) {
+        return new Coordinate(0, 0);
+    }
 }
