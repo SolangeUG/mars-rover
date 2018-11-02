@@ -2,7 +2,6 @@ package com.codurance;
 
 public class LeftCommand implements Command {
 
-
     private Direction direction;
 
     LeftCommand(Direction direction) {
@@ -10,8 +9,9 @@ public class LeftCommand implements Command {
     }
 
     @Override
-    public void execute() {
+    public Direction execute() {
         this.direction = this.direction.moveLeft();
+        return this.direction;
     }
 
     boolean isDirection(Direction direction) {

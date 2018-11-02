@@ -18,9 +18,9 @@ class LeftCommandShould {
         Direction direction = new Direction(initialDirection);
         LeftCommand command = new LeftCommand(direction);
 
-        command.execute();
+        Direction actual = command.execute();
 
         Direction expected = new Direction(finalDirection);
-        assertThat(command.isDirection(expected)).isTrue();
+        assertThat(actual).isEqualTo(expected);
     }
 }
