@@ -30,4 +30,13 @@ class NorthDirectionShould {
         Coordinate expected = new Coordinate(2, 3);
         assertThat(north.moveForward(coordinate, world)).isEqualTo(expected);
     }
+
+    @Test
+    void wrap_around_the_world_if_position_is_on_edge() {
+        Coordinate coordinate = new Coordinate(2, 3);
+        NorthDirection north = new NorthDirection();
+
+        Coordinate expected = new Coordinate(2, World.LOWER_LIMIT);
+        assertThat(north.moveForward(coordinate, world)).isEqualTo(expected);
+    }
 }

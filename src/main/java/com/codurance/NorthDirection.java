@@ -16,6 +16,9 @@ public class NorthDirection extends Direction {
     public Coordinate moveForward(Coordinate coordinate, World world) {
         int xValue = coordinate.xCoordinate;
         int yValue = coordinate.yCoordinate + 1;
+        if (! world.IsInsideYourYUpperLimit(yValue)) {
+            yValue = World.LOWER_LIMIT;
+        }
         return new Coordinate(xValue, yValue);
     }
 }
