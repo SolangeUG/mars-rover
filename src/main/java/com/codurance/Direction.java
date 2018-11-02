@@ -4,7 +4,6 @@ import java.util.Objects;
 
 public abstract class Direction {
 
-    private final String WRONG_DIRECTION = "Why are we here?";
     private String direction;
 
     public abstract Direction moveRight();
