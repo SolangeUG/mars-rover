@@ -10,11 +10,7 @@ public class LeftCommand implements Command {
 
     @Override
     public Direction execute() {
-        this.direction = this.direction.moveLeft();
-        return this.direction;
-    }
-
-    boolean isDirection(Direction direction) {
-        return this.direction.equals(direction);
+        direction = direction.moveLeft();
+        return direction;
     }
 }

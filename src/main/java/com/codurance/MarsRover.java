@@ -39,7 +39,8 @@ public class MarsRover {
     }
 
     private void moveRight() {
-        direction = direction.moveRight();
+        RightCommand command = new RightCommand(direction);
+        direction = command.execute();
     }
 
     private void moveForward() {

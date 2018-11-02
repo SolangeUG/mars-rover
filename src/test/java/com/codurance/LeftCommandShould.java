@@ -14,7 +14,7 @@ class LeftCommandShould {
             "S, E",
             "E, N",
     })
-    void return_rotated_direction(String initialDirection, String finalDirection) {
+    void return_rotated_direction_to_the_left(String initialDirection, String finalDirection) {
         Direction direction = new Direction(initialDirection);
         LeftCommand command = new LeftCommand(direction);
 
