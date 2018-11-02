@@ -57,21 +57,21 @@ class MarsRoverShould {
     @Nested
     class WhenMoveForwardIsCalled {
         @Test
-        public void with_forward_to_east_change_x_coordinate_positively() {
+        void with_forward_to_east_change_x_coordinate_positively() {
             MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), Direction.EAST);
             rover.move("M");
             assertThat(rover.isPosition(3, 2)).isTrue();
         }
 
         @Test
-        public void with_forward_to_west_change_x_coordinate_negatively() {
+        void with_forward_to_west_change_x_coordinate_negatively() {
             MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), Direction.WEST);
             rover.move("M");
             assertThat(rover.isPosition(1, 2)).isTrue();
         }
 
         @Test
-        public void with_forward_to_north_change_y_coordinate_positively() {
+        void with_forward_to_north_change_y_coordinate_positively() {
             MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), Direction.NORTH);
             rover.move("M");
             assertThat(rover.isPosition(2, 3)).isTrue();
@@ -88,21 +88,21 @@ class MarsRoverShould {
     @Nested
     class WhenMoveForwardIsCalledOnEdges {
         @Test
-        public void with_forward_to_east_change_x_coordinate_positively() {
+        void with_forward_to_east_change_x_coordinate_positively() {
             MarsRover rover = new MarsRover(world, new Coordinate(xUpperLimit, defaultYCoordinate), Direction.EAST);
             rover.move("M");
             assertThat(rover.isPosition(World.LOWER_LIMIT, 2)).isTrue();
         }
 
         @Test
-        public void with_forward_to_west_change_x_coordinate_negatively() {
+        void with_forward_to_west_change_x_coordinate_negatively() {
             MarsRover rover = new MarsRover(world, new Coordinate(World.LOWER_LIMIT, defaultYCoordinate), Direction.WEST);
             rover.move("M");
             assertThat(rover.isPosition(xUpperLimit, 2)).isTrue();
         }
 
         @Test
-        public void with_forward_to_north_change_y_coordinate_positively() {
+        void with_forward_to_north_change_y_coordinate_positively() {
             MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, world.yUpperLimit()), Direction.NORTH);
             rover.move("M");
             assertThat(rover.isPosition(2, World.LOWER_LIMIT)).isTrue();
