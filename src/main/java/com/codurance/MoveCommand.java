@@ -11,7 +11,7 @@ public class MoveCommand implements Command {
     }
 
     @Override
-    public Object execute() {
+    public Coordinate execute() {
         position = direction.moveForward(position);
         return this.position;
     }
