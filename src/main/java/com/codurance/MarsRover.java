@@ -1,24 +1,28 @@
 package com.codurance;
 
-public class MarsRover {
+class MarsRover {
     private World world;
     private Coordinate coordinate;
     private Direction direction;
 
-    public MarsRover(World world, Coordinate coordinate, Direction direction) {
+    MarsRover(World world, Coordinate coordinate, Direction direction) {
         this.world = world;
         this.coordinate = coordinate;
         this.direction = direction;
     }
 
-    public void move(String moveCommand) {
-        if (moveCommand.equals("L")) {
-            moveLeft();
-        } else if (moveCommand.equals("R")) {
-            moveRight();
-        } else {
-            moveForward();
-            wrapPosition();
+    void move(String moveCommand) {
+        switch (moveCommand) {
+            case "L":
+                moveLeft();
+                break;
+            case "R":
+                moveRight();
+                break;
+            default:
+                moveForward();
+                wrapPosition();
+                break;
         }
     }
 
@@ -54,11 +58,11 @@ public class MarsRover {
             this.coordinate.yCoordinate -= 1;
     }
 
-    public boolean isDirection(Direction direction) {
+    boolean isDirection(Direction direction) {
         return this.direction.equals(direction);
     }
 
-    public boolean isPosition(int xPosition , int yPosition) {
+    boolean isPosition(int xPosition, int yPosition) {
         return coordinate.xCoordinate == xPosition && coordinate.yCoordinate == yPosition;
     }
 }

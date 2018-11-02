@@ -1,10 +1,10 @@
 package com.codurance;
 
-public class Coordinate {
-    public int xCoordinate;
-    public int yCoordinate;
+class Coordinate {
+    int xCoordinate;
+    int yCoordinate;
 
-    public Coordinate(int xCoordinate, int yCoordinate) {
+    Coordinate(int xCoordinate, int yCoordinate) {
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
     }
