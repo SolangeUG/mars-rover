@@ -2,32 +2,19 @@ package com.codurance;
 
 import java.util.Objects;
 
-public class Direction {
-    public static final Direction WEST = new Direction("W");
-    public static final Direction SOUTH = new Direction("S");
-    public static final Direction EAST = new Direction("E");
-    public static final Direction NORTH = new Direction("N");
+public abstract class Direction {
+
+    static final Direction WEST = new WestDirection();
+    static final Direction SOUTH = new SouthDirection();
+    static final Direction EAST = new EastDirection();
+    static final Direction NORTH = new NorthDirection();
+
     private final String WRONG_DIRECTION = "Why are we here?";
     private String direction;
 
-    public Direction(String direction) {
-        this.direction = direction;
-    }
+    public abstract Direction moveRight();
 
-    public Direction moveRight() {
-        switch (direction) {
-            case "E":
-                return SOUTH;
-            case "S":
-                return WEST;
-            case "N":
-                return EAST;
-            case "W":
-                return NORTH;
-            default:
-                throw new RuntimeException(WRONG_DIRECTION);
-        }
-    }
+    public abstract Direction moveLeft();
 
     @Override
     public boolean equals(Object o) {
@@ -47,20 +34,5 @@ public class Direction {
         return "Direction{" +
                 "direction='" + direction + '\'' +
                 '}';
-    }
-
-    public Direction moveLeft() {
-        switch (direction) {
-            case "N":
-                return WEST;
-            case "W":
-                return SOUTH;
-            case "S":
-                return EAST;
-            case "E":
-                return NORTH;
-            default:
-                throw new RuntimeException(WRONG_DIRECTION);
-        }
     }
 }
