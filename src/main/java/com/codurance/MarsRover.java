@@ -21,20 +21,8 @@ class MarsRover {
                 break;
             default:
                 moveForward();
-                wrapPosition();
                 break;
         }
-    }
-
-    private void wrapPosition() {
-        if (!world.IsInsideYourXUpperLimit(coordinate.xCoordinate))
-            this.coordinate.xCoordinate = World.LOWER_LIMIT;
-        if (!world.IsInsideYourXLowerLimit(coordinate.xCoordinate))
-            this.coordinate.xCoordinate = world.xUpperLimit();
-        if (!world.IsInsideYourYUpperLimit(coordinate.yCoordinate))
-            this.coordinate.yCoordinate = World.LOWER_LIMIT;
-        if (!world.IsInsideYourYLowerLimit(coordinate.yCoordinate))
-            this.coordinate.yCoordinate = world.yUpperLimit();
     }
 
     private void moveLeft() {
