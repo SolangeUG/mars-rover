@@ -14,6 +14,8 @@ public class NorthDirection extends Direction {
 
     @Override
     public Coordinate moveForward(Coordinate coordinate) {
-        return new Coordinate(0, 0);
+        int xValue = coordinate.xCoordinate;
+        int yValue = coordinate.yCoordinate + 1;
+        return new Coordinate(xValue, yValue);
     }
 }
