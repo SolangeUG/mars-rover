@@ -48,7 +48,7 @@ class MarsRover {
     }
 
     private void moveForward() {
-        MoveCommand command = new MoveCommand(coordinate, direction);
+        MoveCommand command = new MoveCommand(coordinate, direction, world);
         coordinate = command.execute();
     }
 

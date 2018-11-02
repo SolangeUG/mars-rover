@@ -13,7 +13,7 @@ public class NorthDirection extends Direction {
     }
 
     @Override
-    public Coordinate moveForward(Coordinate coordinate) {
+    public Coordinate moveForward(Coordinate coordinate, World world) {
         int xValue = coordinate.xCoordinate;
         int yValue = coordinate.yCoordinate + 1;
         return new Coordinate(xValue, yValue);

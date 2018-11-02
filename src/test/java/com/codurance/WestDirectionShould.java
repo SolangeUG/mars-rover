@@ -6,6 +6,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class WestDirectionShould {
 
+    private final int xUpperLimit = 3;
+    private final int yUpperLimit = 3;
+    private final World world = new World(xUpperLimit, yUpperLimit);
+
     @Test
     void return_south_when_asked_to_turn_left() {
         WestDirection west = new WestDirection();
@@ -24,6 +28,15 @@ class WestDirectionShould {
         WestDirection west = new WestDirection();
 
         Coordinate expected = new Coordinate(1, 2);
-        assertThat(west.moveForward(coordinate)).isEqualTo(expected);
+        assertThat(west.moveForward(coordinate, world)).isEqualTo(expected);
+    }
+
+    @Test
+    void wrap_around_the_world_if_position_is_on_edge() {
+        Coordinate coordinate = new Coordinate(1, 2);
+        WestDirection west = new WestDirection();
+
+        Coordinate expected = new Coordinate(xUpperLimit, 2);
+        assertThat(west.moveForward(coordinate, world)).isEqualTo(expected);
     }
 }

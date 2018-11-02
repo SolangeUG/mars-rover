@@ -10,7 +10,7 @@ public abstract class Direction {
 
     public abstract Direction moveLeft();
 
-    public abstract Coordinate moveForward(Coordinate coordinate);
+    public abstract Coordinate moveForward(Coordinate coordinate, World world);
 
     @Override
     public boolean equals(Object o) {

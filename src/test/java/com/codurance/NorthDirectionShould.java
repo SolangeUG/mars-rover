@@ -6,6 +6,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class NorthDirectionShould {
 
+    private final int xUpperLimit = 3;
+    private final int yUpperLimit = 3;
+    private final World world = new World(xUpperLimit, yUpperLimit);
+
     @Test
     void change_to_east_when_asked_to_move_right() {
         Direction north = new NorthDirection();
@@ -24,6 +28,6 @@ class NorthDirectionShould {
         NorthDirection north = new NorthDirection();
 
         Coordinate expected = new Coordinate(2, 3);
-        assertThat(north.moveForward(coordinate)).isEqualTo(expected);
+        assertThat(north.moveForward(coordinate, world)).isEqualTo(expected);
     }
 }
