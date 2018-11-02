@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MarsRoverShould {
+class MarsRoverShould {
 
     private final int xUpperLimit = 3;
     private final int yUpperLimit = 3;
@@ -15,42 +15,47 @@ public class MarsRoverShould {
     private final int defaultXCoordinate = 2;
     private final int defaultYCoordinate = 2;
 
-    @Nested
-    public class WhenCallingIsDirection {
+    private final Direction NORTH = new NorthDirection();
+    private final Direction EAST = new EastDirection();
+    private final Direction SOUTH = new SouthDirection();
+    private final Direction WEST = new WestDirection();
 
-        private final MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), Direction.NORTH);
+    @Nested
+    class WhenCallingIsDirection {
+
+        private final MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), NORTH);
 
         @Test
-        public void return_true_if_direction_is_the_same() {
-            assertThat(rover.isDirection(Direction.NORTH)).isTrue();
+        void return_true_if_direction_is_the_same() {
+            assertThat(rover.isDirection(NORTH)).isTrue();
         }
 
         @Test
-        public void return_false_is_direction_is_different() {
-            assertThat(rover.isDirection(Direction.EAST)).isFalse();
+        void return_false_is_direction_is_different() {
+            assertThat(rover.isDirection(EAST)).isFalse();
         }
     }
 
     @Nested
-    public class WhenMoveIsCalled {
+    class WhenMoveIsCalled {
 
-        private final MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), Direction.EAST);
+        private final MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), EAST);
 
         @Test
-        public void with_right_command_turn_right() {
+        void with_right_command_turn_right() {
             rover.move("R");
-            assertThat(rover.isDirection(Direction.SOUTH)).isTrue();
+            assertThat(rover.isDirection(SOUTH)).isTrue();
         }
 
         @Test
-        public void with_left_command_turn_left() {
+        void with_left_command_turn_left() {
             rover.move("L");
-            assertThat(rover.isDirection(Direction.NORTH)).isTrue();
+            assertThat(rover.isDirection(NORTH)).isTrue();
         }
     }
 
     @Nested
-    public class WhenMoveForwardIsCalled {
+    class WhenMoveForwardIsCalled {
         @Test
         public void with_forward_to_east_change_x_coordinate_positively() {
             MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), Direction.EAST);
@@ -73,15 +78,15 @@ public class MarsRoverShould {
         }
 
         @Test
-        public void with_forward_to_south_change_y_coordinate_negatively() {
-            MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), Direction.SOUTH);
+        void with_forward_to_south_change_y_coordinate_negatively() {
+            MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), SOUTH);
             rover.move("M");
             assertThat(rover.isPosition(2, 1)).isTrue();
         }
     }
 
     @Nested
-    public class WhenMoveForwardIsCalledOnEdges {
+    class WhenMoveForwardIsCalledOnEdges {
         @Test
         public void with_forward_to_east_change_x_coordinate_positively() {
             MarsRover rover = new MarsRover(world, new Coordinate(xUpperLimit, defaultYCoordinate), Direction.EAST);
@@ -104,17 +109,17 @@ public class MarsRoverShould {
         }
 
         @Test
-        public void with_forward_to_south_change_y_coordinate_negatively() {
-            MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, World.LOWER_LIMIT), Direction.SOUTH);
+        void with_forward_to_south_change_y_coordinate_negatively() {
+            MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, World.LOWER_LIMIT), SOUTH);
             rover.move("M");
             assertThat(rover.isPosition(2, world.yUpperLimit())).isTrue();
         }
     }
     @Nested
-    public class WhenCallingIsPosition {
+    class WhenCallingIsPosition {
         @Test
-        public void return_true_if_positions_is_the_same() {
-            MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), Direction.SOUTH);
+        void return_true_if_positions_is_the_same() {
+            MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), SOUTH);
             assertThat(rover.isPosition(2, 2)).isTrue();
         }
 
@@ -123,8 +128,8 @@ public class MarsRoverShould {
                 "2, 3",
                 "3, 2",
                 "3, 3"})
-        public void return_false_if_positions_is_different(int xPosition, int yPosition) {
-            MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), Direction.SOUTH);
+        void return_false_if_positions_is_different(int xPosition, int yPosition) {
+            MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), SOUTH);
             assertThat(rover.isPosition(xPosition, yPosition)).isFalse();
         }
     }

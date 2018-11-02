@@ -4,11 +4,11 @@ class WestDirection extends Direction {
 
     @Override
     public Direction moveRight() {
-        return Direction.NORTH;
+        return new NorthDirection();
     }
 
     @Override
     public Direction moveLeft() {
-        return Direction.SOUTH;
+        return new SouthDirection();
     }
 }
