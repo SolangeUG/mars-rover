@@ -16,7 +16,7 @@ public class DirectionShould {
     public void move_right_following_compass_expectations(String startingDirection, String finalDirection) {
         Direction direction = new Direction(startingDirection);
         Direction expectedDirection = new Direction(finalDirection);
-        Direction actualDirection = direction.moveRight();
+        Direction actualDirection = direction.turnRight();
 
         assertThat(actualDirection).isEqualTo(expectedDirection);
     }
@@ -30,7 +30,7 @@ public class DirectionShould {
     public void move_left_following_compass_expectations(String startingDirection, String finalDirection) {
         Direction direction = new Direction(startingDirection);
         Direction expectedDirection = new Direction(finalDirection);
-        Direction actualDirection = direction.moveLeft();
+        Direction actualDirection = direction.turnLeft();
 
         assertThat(actualDirection).isEqualTo(expectedDirection);
     }

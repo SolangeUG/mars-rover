@@ -14,7 +14,7 @@ public class Direction {
         this.direction = direction;
     }
 
-    public Direction moveRight() {
+    public Direction turnRight() {
         switch (direction) {
             case "E":
                 return SOUTH;
@@ -49,7 +49,7 @@ public class Direction {
                 '}';
     }
 
-    public Direction moveLeft() {
+    public Direction turnLeft() {
         switch (direction) {
             case "N":
                 return WEST;

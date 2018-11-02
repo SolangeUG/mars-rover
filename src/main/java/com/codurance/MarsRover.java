@@ -13,9 +13,9 @@ public class MarsRover {
 
     public void move(String moveCommand) {
         if (moveCommand.equals("L")) {
-            moveLeft();
+            turnLeft();
         } else if (moveCommand.equals("R")) {
-            moveRight();
+            turnRight();
         } else {
             moveForward();
             wrapPosition();
@@ -33,12 +33,12 @@ public class MarsRover {
             this.coordinate.yCoordinate = world.yUpperLimit();
     }
 
-    private void moveLeft() {
-        direction = direction.moveLeft();
+    private void turnLeft() {
+        direction = direction.turnLeft();
     }
 
-    private void moveRight() {
-        direction = direction.moveRight();
+    private void turnRight() {
+        direction = direction.turnRight();
     }
 
     private void moveForward() {
