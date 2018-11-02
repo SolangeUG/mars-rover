@@ -9,12 +9,12 @@ class WestDirectionShould {
     @Test
     void return_south_when_asked_to_turn_left() {
         WestDirection west = new WestDirection();
-        assertThat(west.moveLeft()).isEqualTo(Direction.SOUTH);
+        assertThat(west.moveLeft()).isEqualTo(new SouthDirection());
     }
 
     @Test
     void return_north_when_asked_to_move_right() {
         WestDirection west = new WestDirection();
-        assertThat(west.moveRight()).isEqualTo(Direction.NORTH);
+        assertThat(west.moveRight()).isEqualTo(new NorthDirection());
     }
 }

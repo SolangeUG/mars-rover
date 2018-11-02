@@ -48,11 +48,11 @@ class MarsRover {
     }
 
     private void moveForward() {
-        if (direction == Direction.WEST)
+        if (direction.equals(new WestDirection()))
             this.coordinate.xCoordinate -= 1;
-        else if (direction == Direction.EAST)
+        else if (direction.equals(new EastDirection()))
             this.coordinate.xCoordinate += 1;
-        else if (direction == Direction.NORTH)
+        else if (direction.equals(new NorthDirection()))
             this.coordinate.yCoordinate += 1;
         else
             this.coordinate.yCoordinate -= 1;

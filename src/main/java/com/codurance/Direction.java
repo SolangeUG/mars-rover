@@ -4,11 +4,6 @@ import java.util.Objects;
 
 public abstract class Direction {
 
-    static final Direction WEST = new WestDirection();
-    static final Direction SOUTH = new SouthDirection();
-    static final Direction EAST = new EastDirection();
-    static final Direction NORTH = new NorthDirection();
-
     private final String WRONG_DIRECTION = "Why are we here?";
     private String direction;
 
