@@ -2,6 +2,10 @@ package com.codurance;
 
 class EastDirection extends Direction {
 
+    EastDirection() {
+        super("E");
+    }
+
     @Override
     public Direction turnRight() {
         return new SouthDirection();

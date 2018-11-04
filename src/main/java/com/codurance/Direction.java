@@ -6,6 +6,10 @@ public abstract class Direction {
 
     private String direction;
 
+    protected Direction(String direction) {
+        this.direction = direction;
+    }
+
     public abstract Direction turnRight();
 
     public abstract Direction turnLeft();
@@ -27,8 +31,6 @@ public abstract class Direction {
 
     @Override
     public String toString() {
-        return "Direction{" +
-                "direction='" + direction + '\'' +
-                '}';
+        return direction;
     }
 }
