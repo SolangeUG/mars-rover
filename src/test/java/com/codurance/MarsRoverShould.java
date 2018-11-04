@@ -46,14 +46,14 @@ class MarsRoverShould {
         @Test
         void with_right_command_turn_right() {
             Command command = new RightCommand(EAST);
-            rover.updatePosition(Collections.singletonList(command));
+            rover.move(Collections.singletonList(command));
             assertThat(rover.isDirection(SOUTH)).isTrue();
         }
 
         @Test
         void with_left_command_turn_left() {
             Command command = new LeftCommand(EAST);
-            rover.updatePosition(Collections.singletonList(command));
+            rover.move(Collections.singletonList(command));
             assertThat(rover.isDirection(NORTH)).isTrue();
         }
     }
@@ -66,7 +66,7 @@ class MarsRoverShould {
             Coordinate coordinate = new Coordinate(defaultXCoordinate, defaultYCoordinate);
             MarsRover rover = new MarsRover(world, coordinate, EAST);
             Command command = new MoveCommand(coordinate, EAST, world);
-            rover.updatePosition(Collections.singletonList(command));
+            rover.move(Collections.singletonList(command));
             assertThat(rover.isPosition(3, 2)).isTrue();
         }
 
@@ -75,7 +75,7 @@ class MarsRoverShould {
             Coordinate coordinate = new Coordinate(defaultXCoordinate, defaultYCoordinate);
             MarsRover rover = new MarsRover(world, coordinate, WEST);
             Command command = new MoveCommand(coordinate, WEST, world);
-            rover.updatePosition(Collections.singletonList(command));
+            rover.move(Collections.singletonList(command));
             assertThat(rover.isPosition(1, 2)).isTrue();
         }
 
@@ -84,7 +84,7 @@ class MarsRoverShould {
             Coordinate coordinate = new Coordinate(defaultXCoordinate, defaultYCoordinate);
             MarsRover rover = new MarsRover(world, coordinate, NORTH);
             Command command = new MoveCommand(coordinate, NORTH, world);
-            rover.updatePosition(Collections.singletonList(command));
+            rover.move(Collections.singletonList(command));
             assertThat(rover.isPosition(2, 3)).isTrue();
         }
 
@@ -93,7 +93,7 @@ class MarsRoverShould {
             Coordinate coordinate = new Coordinate(defaultXCoordinate, defaultYCoordinate);
             MarsRover rover = new MarsRover(world, coordinate, SOUTH);
             Command command = new MoveCommand(coordinate, SOUTH, world);
-            rover.updatePosition(Collections.singletonList(command));
+            rover.move(Collections.singletonList(command));
             assertThat(rover.isPosition(2, 1)).isTrue();
         }
     }
@@ -106,7 +106,7 @@ class MarsRoverShould {
             Coordinate coordinate = new Coordinate(xUpperLimit, defaultYCoordinate);
             MarsRover rover = new MarsRover(world, coordinate, EAST);
             Command command = new MoveCommand(coordinate, EAST, world);
-            rover.updatePosition(Collections.singletonList(command));
+            rover.move(Collections.singletonList(command));
             assertThat(rover.isPosition(World.LOWER_LIMIT, 2)).isTrue();
         }
 
@@ -115,7 +115,7 @@ class MarsRoverShould {
             Coordinate coordinate = new Coordinate(World.LOWER_LIMIT, defaultYCoordinate);
             MarsRover rover = new MarsRover(world, coordinate, WEST);
             Command command = new MoveCommand(coordinate, WEST, world);
-            rover.updatePosition(Collections.singletonList(command));
+            rover.move(Collections.singletonList(command));
             assertThat(rover.isPosition(xUpperLimit, 2)).isTrue();
         }
 
@@ -124,7 +124,7 @@ class MarsRoverShould {
             Coordinate coordinate = new Coordinate(defaultXCoordinate, world.yUpperLimit());
             MarsRover rover = new MarsRover(world, coordinate, NORTH);
             Command command = new MoveCommand(coordinate, NORTH, world);
-            rover.updatePosition(Collections.singletonList(command));
+            rover.move(Collections.singletonList(command));
             assertThat(rover.isPosition(2, World.LOWER_LIMIT)).isTrue();
         }
 
@@ -133,7 +133,7 @@ class MarsRoverShould {
             Coordinate coordinate = new Coordinate(defaultXCoordinate, World.LOWER_LIMIT);
             MarsRover rover = new MarsRover(world, coordinate, SOUTH);
             Command command = new MoveCommand(coordinate, SOUTH, world);
-            rover.updatePosition(Collections.singletonList(command));
+            rover.move(Collections.singletonList(command));
             assertThat(rover.isPosition(2, world.yUpperLimit())).isTrue();
         }
     }

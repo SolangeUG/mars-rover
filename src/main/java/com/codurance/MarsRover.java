@@ -13,7 +13,7 @@ class MarsRover {
         this.position = new Position(world, coordinate, direction);
     }
 
-    void updatePosition(List<Command> commands) {
+    void move(List<Command> commands) {
         for (Command command: commands) {
             command.updatePosition(position);
             direction = position.getDirection();
