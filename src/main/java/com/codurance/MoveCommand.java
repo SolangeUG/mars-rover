@@ -3,13 +3,12 @@ package com.codurance;
 public class MoveCommand implements Command {
 
     private Coordinate coordinate;
-    private final Direction direction;
+    private Direction direction;
     private World world;
+    private Position position;
 
-    MoveCommand(Coordinate coordinate, Direction direction, World world) {
-        this.coordinate = coordinate;
-        this.direction = direction;
-        this.world = world;
+    MoveCommand(Position position) {
+        this.position = position;
     }
 
     @Override
@@ -27,10 +26,12 @@ public class MoveCommand implements Command {
     }
 
     boolean isCoordinate(Coordinate coordinate) {
+        this.coordinate = position.getCoordinate();
         return this.coordinate.equals(coordinate);
     }
 
     boolean isDirection(Direction direction) {
+        this.direction = position.getDirection();
         return this.direction.equals(direction);
     }
 }

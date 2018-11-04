@@ -9,14 +9,15 @@ class MoveCommandShould {
     private final int xUpperLimit = 3;
     private final int yUpperLimit = 3;
     private final World world = new World(xUpperLimit, yUpperLimit);
+    private Coordinate coordinate = new Coordinate(2, 2);
 
     @Test
     void when_moving_east_increment_x_coordinate() {
-        Coordinate position = new Coordinate(2, 2);
         Direction direction = new EastDirection();
-        MoveCommand command = new MoveCommand(position, direction, world);
+        Position position = new Position(world, coordinate, direction);
+        MoveCommand command = new MoveCommand(position);
 
-        command.execute();
+        command.updatePosition(position);
         Coordinate expected = new Coordinate(3, 2);
 
         assertThat(command.isCoordinate(expected)).isTrue();
@@ -25,11 +26,11 @@ class MoveCommandShould {
 
     @Test
     void when_moving_west_decrement_x_coordinate() {
-        Coordinate position = new Coordinate(2, 2);
         Direction direction = new WestDirection();
-        MoveCommand command = new MoveCommand(position, direction, world);
+        Position position = new Position(world, coordinate, direction);
+        MoveCommand command = new MoveCommand(position);
 
-        command.execute();
+        command.updatePosition(position);
         Coordinate expected = new Coordinate(1, 2);
 
         assertThat(command.isCoordinate(expected)).isTrue();
@@ -38,11 +39,11 @@ class MoveCommandShould {
 
     @Test
     void when_moving_north_increment_y_coordinate() {
-        Coordinate position = new Coordinate(2, 2);
         Direction direction = new NorthDirection();
-        MoveCommand command = new MoveCommand(position, direction, world);
+        Position position = new Position(world, coordinate, direction);
+        MoveCommand command = new MoveCommand(position);
 
-        command.execute();
+        command.updatePosition(position);
         Coordinate expected = new Coordinate(2, 3);
 
         assertThat(command.isCoordinate(expected)).isTrue();
@@ -51,11 +52,11 @@ class MoveCommandShould {
 
     @Test
     void when_moving_south_decrement_y_coordinate() {
-        Coordinate position = new Coordinate(2, 2);
         Direction direction = new SouthDirection();
-        MoveCommand command = new MoveCommand(position, direction, world);
+        Position position = new Position(world, coordinate, direction);
+        MoveCommand command = new MoveCommand(position);
 
-        command.execute();
+        command.updatePosition(position);
         Coordinate expected = new Coordinate(2, 1);
 
         assertThat(command.isCoordinate(expected)).isTrue();
