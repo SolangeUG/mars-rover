@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -140,6 +139,7 @@ class MarsRoverShould {
 
     @Nested
     class WhenMoveForwardIsCalledOnEdges {
+
         @Test
         void with_forward_to_east_change_x_coordinate_positively() {
             MarsRover rover = new MarsRover(world, new Coordinate(xUpperLimit, defaultYCoordinate), EAST);
@@ -167,7 +167,44 @@ class MarsRoverShould {
             rover.move("M");
             assertThat(rover.isPosition(2, world.yUpperLimit())).isTrue();
         }
+
+        @Test
+        void with_forward_to_east_pattern_change_x_coordinate_positively() {
+            Coordinate coordinate = new Coordinate(xUpperLimit, defaultYCoordinate);
+            MarsRover rover = new MarsRover(world, coordinate, EAST);
+            Command command = new MoveCommand(coordinate, EAST, world);
+            rover.updatePosition(Collections.singletonList(command));
+            assertThat(rover.isPosition(World.LOWER_LIMIT, 2)).isTrue();
+        }
+
+        @Test
+        void with_forward_to_west_pattern_change_x_coordinate_negatively() {
+            Coordinate coordinate = new Coordinate(World.LOWER_LIMIT, defaultYCoordinate);
+            MarsRover rover = new MarsRover(world, coordinate, WEST);
+            Command command = new MoveCommand(coordinate, WEST, world);
+            rover.updatePosition(Collections.singletonList(command));
+            assertThat(rover.isPosition(xUpperLimit, 2)).isTrue();
+        }
+
+        @Test
+        void with_forward_to_north_pattern_change_y_coordinate_positively() {
+            Coordinate coordinate = new Coordinate(defaultXCoordinate, world.yUpperLimit());
+            MarsRover rover = new MarsRover(world, coordinate, NORTH);
+            Command command = new MoveCommand(coordinate, NORTH, world);
+            rover.updatePosition(Collections.singletonList(command));
+            assertThat(rover.isPosition(2, World.LOWER_LIMIT)).isTrue();
+        }
+
+        @Test
+        void with_forward_to_south_pattern_change_y_coordinate_negatively() {
+            Coordinate coordinate = new Coordinate(defaultXCoordinate, World.LOWER_LIMIT);
+            MarsRover rover = new MarsRover(world, coordinate, SOUTH);
+            Command command = new MoveCommand(coordinate, SOUTH, world);
+            rover.updatePosition(Collections.singletonList(command));
+            assertThat(rover.isPosition(2, world.yUpperLimit())).isTrue();
+        }
     }
+
     @Nested
     class WhenCallingIsPosition {
         @Test
