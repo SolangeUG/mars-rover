@@ -52,7 +52,7 @@ class MarsRoverShould {
 
         @Test
         void with_left_command_turn_left() {
-            Command command = new LeftCommand(EAST);
+            Command command = new LeftCommand();
             rover.move(Collections.singletonList(command));
             assertThat(rover.isDirection(NORTH)).isTrue();
         }
