@@ -16,8 +16,8 @@ public abstract class Direction {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Direction direction1 = (Direction) o;
-        return Objects.equals(direction, direction1.direction);
+        Direction otherDirection = (Direction) o;
+        return Objects.equals(direction, otherDirection.direction);
     }
 
     @Override
