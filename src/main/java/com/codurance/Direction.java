@@ -6,9 +6,9 @@ public abstract class Direction {
 
     private String direction;
 
-    public abstract Direction moveRight();
+    public abstract Direction turnRight();
 
-    public abstract Direction moveLeft();
+    public abstract Direction turnLeft();
 
     public abstract Coordinate moveForward(Coordinate coordinate, World world);
 

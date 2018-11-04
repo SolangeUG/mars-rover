@@ -3,12 +3,12 @@ package com.codurance;
 class SouthDirection extends Direction {
 
     @Override
-    public Direction moveRight() {
+    public Direction turnRight() {
         return new WestDirection();
     }
 
     @Override
-    public Direction moveLeft() {
+    public Direction turnLeft() {
         return new EastDirection();
     }
 

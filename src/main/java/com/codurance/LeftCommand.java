@@ -9,6 +9,6 @@ public class LeftCommand implements Command {
     @Override
     public void update(Position position) {
         Direction direction = position.getDirection();
-        position.setDirection(direction.moveLeft());
+        position.setDirection(direction.turnLeft());
     }
 }
