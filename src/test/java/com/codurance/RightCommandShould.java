@@ -6,12 +6,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RightCommandShould {
 
-    @Test
-    void return_east_direction_When_rotating_north_to_the_right() {
-        Direction direction = new NorthDirection();
-        RightCommand command = new RightCommand(direction);
+    private final int xUpperLimit = 3;
+    private final int yUpperLimit = 3;
+    private final World world = new World(xUpperLimit, yUpperLimit);
+    private Coordinate coordinate = new Coordinate(xUpperLimit, yUpperLimit);
 
-        Direction actual = command.execute();
+    @Test
+    void return_east_direction_when_rotating_north_to_the_right() {
+        Direction direction = new NorthDirection();
+        Position position = new Position(world, coordinate, direction);
+        RightCommand command = new RightCommand();
+
+        command.updatePosition(position);
+        Direction actual = position.getDirection();
 
         Direction expected = new EastDirection();
         assertThat(actual).isEqualTo(expected);
@@ -20,9 +27,11 @@ class RightCommandShould {
     @Test
     void return_south_direction_when_rotating_east_to_the_right() {
         Direction direction = new EastDirection();
-        RightCommand command = new RightCommand(direction);
+        Position position = new Position(world, coordinate, direction);
+        RightCommand command = new RightCommand();
 
-        Direction actual = command.execute();
+        command.updatePosition(position);
+        Direction actual = position.getDirection();
 
         Direction expected = new SouthDirection();
         assertThat(actual).isEqualTo(expected);
@@ -31,9 +40,11 @@ class RightCommandShould {
     @Test
     void return_west_direction_when_rotating_south_to_the_right() {
         Direction direction = new SouthDirection();
-        RightCommand command = new RightCommand(direction);
+        Position position = new Position(world, coordinate, direction);
+        RightCommand command = new RightCommand();
 
-        Direction actual = command.execute();
+        command.updatePosition(position);
+        Direction actual = position.getDirection();
 
         Direction expected = new WestDirection();
         assertThat(actual).isEqualTo(expected);
@@ -42,9 +53,11 @@ class RightCommandShould {
     @Test
     void return_north_direction_when_rotating_west_to_the_right() {
         Direction direction = new WestDirection();
-        RightCommand command = new RightCommand(direction);
+        Position position = new Position(world, coordinate, direction);
+        RightCommand command = new RightCommand();
 
-        Direction actual = command.execute();
+        command.updatePosition(position);
+        Direction actual = position.getDirection();
 
         Direction expected = new NorthDirection();
         assertThat(actual).isEqualTo(expected);

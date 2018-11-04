@@ -4,8 +4,8 @@ class RightCommand implements Command {
 
     private Direction direction;
 
-    RightCommand(Direction direction) {
-        this.direction = direction;
+    RightCommand() {
+        super();
     }
 
     @Override

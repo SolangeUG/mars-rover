@@ -45,7 +45,7 @@ class MarsRoverShould {
 
         @Test
         void with_right_command_turn_right() {
-            Command command = new RightCommand(EAST);
+            Command command = new RightCommand();
             rover.move(Collections.singletonList(command));
             assertThat(rover.isDirection(SOUTH)).isTrue();
         }
