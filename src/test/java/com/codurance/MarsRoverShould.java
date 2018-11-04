@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class MarsRoverShould {
@@ -52,6 +55,20 @@ class MarsRoverShould {
             rover.move("L");
             assertThat(rover.isDirection(NORTH)).isTrue();
         }
+
+        @Test
+        void with_right_command_pattern_turn_right() {
+            Command command = new RightCommand(EAST);
+            rover.updatePosition(Collections.singletonList(command));
+            assertThat(rover.isDirection(SOUTH)).isTrue();
+        }
+
+        @Test
+        void with_left_command_pattern_turn_left() {
+            Command command = new LeftCommand(EAST);
+            rover.updatePosition(Collections.singletonList(command));
+            assertThat(rover.isDirection(NORTH)).isTrue();
+        }
     }
 
     @Nested
@@ -81,6 +98,42 @@ class MarsRoverShould {
         void with_forward_to_south_change_y_coordinate_negatively() {
             MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), SOUTH);
             rover.move("M");
+            assertThat(rover.isPosition(2, 1)).isTrue();
+        }
+
+        @Test
+        void with_forward_to_east_pattern_change_x_coordinate_positively() {
+            Coordinate coordinate = new Coordinate(defaultXCoordinate, defaultYCoordinate);
+            MarsRover rover = new MarsRover(world, coordinate, EAST);
+            Command command = new MoveCommand(coordinate, EAST, world);
+            rover.updatePosition(Collections.singletonList(command));
+            assertThat(rover.isPosition(3, 2)).isTrue();
+        }
+
+        @Test
+        void with_forward_to_west_pattern_change_x_coordinate_negatively() {
+            Coordinate coordinate = new Coordinate(defaultXCoordinate, defaultYCoordinate);
+            MarsRover rover = new MarsRover(world, coordinate, WEST);
+            Command command = new MoveCommand(coordinate, WEST, world);
+            rover.updatePosition(Collections.singletonList(command));
+            assertThat(rover.isPosition(1, 2)).isTrue();
+        }
+
+        @Test
+        void with_forward_to_north_pattern_change_y_coordinate_positively() {
+            Coordinate coordinate = new Coordinate(defaultXCoordinate, defaultYCoordinate);
+            MarsRover rover = new MarsRover(world, coordinate, NORTH);
+            Command command = new MoveCommand(coordinate, NORTH, world);
+            rover.updatePosition(Collections.singletonList(command));
+            assertThat(rover.isPosition(2, 3)).isTrue();
+        }
+
+        @Test
+        void with_forward_to_south_pattern_change_y_coordinate_negatively() {
+            Coordinate coordinate = new Coordinate(defaultXCoordinate, defaultYCoordinate);
+            MarsRover rover = new MarsRover(world, coordinate, SOUTH);
+            Command command = new MoveCommand(coordinate, SOUTH, world);
+            rover.updatePosition(Collections.singletonList(command));
             assertThat(rover.isPosition(2, 1)).isTrue();
         }
     }

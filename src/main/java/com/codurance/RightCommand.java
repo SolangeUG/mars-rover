@@ -13,4 +13,10 @@ class RightCommand implements Command {
         direction = direction.moveRight();
         return direction;
     }
+
+    @Override
+    public void updatePosition(Position position) {
+        Direction  direction = position.getDirection();
+        position.setDirection(direction.moveRight());
+    }
 }

@@ -13,4 +13,10 @@ public class LeftCommand implements Command {
         direction = direction.moveLeft();
         return direction;
     }
+
+    @Override
+    public void updatePosition(Position position) {
+        Direction direction = position.getDirection();
+        position.setDirection(direction.moveLeft());
+    }
 }
