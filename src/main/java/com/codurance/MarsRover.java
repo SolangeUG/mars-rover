@@ -9,6 +9,10 @@ class MarsRover {
         this.position = new Position(world, coordinate, direction);
     }
 
+    MarsRover(Position initialPosition) {
+        this.position = initialPosition;
+    }
+
     void move(List<Command> commands) {
         for (Command command: commands) {
             command.update(position);
@@ -24,5 +28,9 @@ class MarsRover {
         Coordinate myCoordinate = position.getCoordinate();
         return myCoordinate.xCoordinate == xPosition
                 && myCoordinate.yCoordinate == yPosition;
+    }
+
+    String output() {
+        return this.position.toString();
     }
 }

@@ -1,7 +1,10 @@
 package com.codurance;
 
+import java.util.Objects;
+
 public class World {
-    public static final int LOWER_LIMIT = 1;
+
+    static final int LOWER_LIMIT = 1;
     private final int xLimit;
     private final int yLimit;
 
@@ -10,20 +13,20 @@ public class World {
         this.yLimit = yLimit;
     }
 
-    public boolean IsInsideYourXUpperLimit(int xCoordinate) {
+    boolean IsInsideYourXUpperLimit(int xCoordinate) {
         return xCoordinate <= xLimit;
     }
 
-    public boolean IsInsideYourYUpperLimit(int yCoordinate) {
+    boolean IsInsideYourYUpperLimit(int yCoordinate) {
 
         return yCoordinate <= yLimit;
     }
 
-    public boolean IsInsideYourXLowerLimit(int xCoordinate) {
+    boolean IsInsideYourXLowerLimit(int xCoordinate) {
         return xCoordinate >= LOWER_LIMIT;
     }
 
-    public boolean IsInsideYourYLowerLimit(int yCoordinate) {
+    boolean IsInsideYourYLowerLimit(int yCoordinate) {
         return yCoordinate >= LOWER_LIMIT;
     }
 
@@ -33,5 +36,19 @@ public class World {
 
     public int yUpperLimit() {
         return yLimit;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        World world = (World) o;
+        return xLimit == world.xLimit &&
+                yLimit == world.yLimit;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(xLimit, yLimit);
     }
 }
