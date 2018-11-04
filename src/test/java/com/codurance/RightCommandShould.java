@@ -17,7 +17,7 @@ class RightCommandShould {
         Position position = new Position(world, coordinate, direction);
         RightCommand command = new RightCommand();
 
-        command.updatePosition(position);
+        command.update(position);
         Direction actual = position.getDirection();
 
         Direction expected = new EastDirection();
@@ -30,7 +30,7 @@ class RightCommandShould {
         Position position = new Position(world, coordinate, direction);
         RightCommand command = new RightCommand();
 
-        command.updatePosition(position);
+        command.update(position);
         Direction actual = position.getDirection();
 
         Direction expected = new SouthDirection();
@@ -43,7 +43,7 @@ class RightCommandShould {
         Position position = new Position(world, coordinate, direction);
         RightCommand command = new RightCommand();
 
-        command.updatePosition(position);
+        command.update(position);
         Direction actual = position.getDirection();
 
         Direction expected = new WestDirection();
@@ -56,7 +56,7 @@ class RightCommandShould {
         Position position = new Position(world, coordinate, direction);
         RightCommand command = new RightCommand();
 
-        command.updatePosition(position);
+        command.update(position);
         Direction actual = position.getDirection();
 
         Direction expected = new NorthDirection();

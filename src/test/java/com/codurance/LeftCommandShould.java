@@ -17,7 +17,7 @@ class LeftCommandShould {
         LeftCommand command = new LeftCommand();
         Position position = new Position(world, coordinate, direction);
 
-        command.updatePosition(position);
+        command.update(position);
         Direction actual = position.getDirection();
 
         Direction expected = new WestDirection();
@@ -30,7 +30,7 @@ class LeftCommandShould {
         LeftCommand command = new LeftCommand();
         Position position = new Position(world, coordinate, direction);
 
-        command.updatePosition(position);
+        command.update(position);
         Direction actual = position.getDirection();
 
         Direction expected = new NorthDirection();
@@ -43,7 +43,7 @@ class LeftCommandShould {
         LeftCommand command = new LeftCommand();
         Position position = new Position(world, coordinate, direction);
 
-        command.updatePosition(position);
+        command.update(position);
         Direction actual = position.getDirection();
 
         Direction expected = new EastDirection();
@@ -56,7 +56,7 @@ class LeftCommandShould {
         LeftCommand command = new LeftCommand();
         Position position = new Position(world, coordinate, direction);
 
-        command.updatePosition(position);
+        command.update(position);
         Direction actual = position.getDirection();
 
         Direction expected = new SouthDirection();

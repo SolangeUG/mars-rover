@@ -15,7 +15,7 @@ class MarsRover {
 
     void move(List<Command> commands) {
         for (Command command: commands) {
-            command.updatePosition(position);
+            command.update(position);
             direction = position.getDirection();
             coordinate = position.getCoordinate();
         }

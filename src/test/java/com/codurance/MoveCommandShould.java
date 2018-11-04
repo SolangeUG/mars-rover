@@ -17,7 +17,7 @@ class MoveCommandShould {
         Position position = new Position(world, coordinate, direction);
         MoveCommand command = new MoveCommand(position);
 
-        command.updatePosition(position);
+        command.update(position);
         Coordinate expected = new Coordinate(3, 2);
 
         assertThat(command.isCoordinate(expected)).isTrue();
@@ -30,7 +30,7 @@ class MoveCommandShould {
         Position position = new Position(world, coordinate, direction);
         MoveCommand command = new MoveCommand(position);
 
-        command.updatePosition(position);
+        command.update(position);
         Coordinate expected = new Coordinate(1, 2);
 
         assertThat(command.isCoordinate(expected)).isTrue();
@@ -43,7 +43,7 @@ class MoveCommandShould {
         Position position = new Position(world, coordinate, direction);
         MoveCommand command = new MoveCommand(position);
 
-        command.updatePosition(position);
+        command.update(position);
         Coordinate expected = new Coordinate(2, 3);
 
         assertThat(command.isCoordinate(expected)).isTrue();
@@ -56,7 +56,7 @@ class MoveCommandShould {
         Position position = new Position(world, coordinate, direction);
         MoveCommand command = new MoveCommand(position);
 
-        command.updatePosition(position);
+        command.update(position);
         Coordinate expected = new Coordinate(2, 1);
 
         assertThat(command.isCoordinate(expected)).isTrue();

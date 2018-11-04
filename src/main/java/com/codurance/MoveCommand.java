@@ -9,7 +9,7 @@ public class MoveCommand implements Command {
     }
 
     @Override
-    public void updatePosition(Position position) {
+    public void update(Position position) {
         World world = position.getWorld();
         Coordinate coordinate = position.getCoordinate();
         Direction direction = position.getDirection();

@@ -2,14 +2,12 @@ package com.codurance;
 
 class RightCommand implements Command {
 
-    private Direction direction;
-
     RightCommand() {
         super();
     }
 
     @Override
-    public void updatePosition(Position position) {
+    public void update(Position position) {
         Direction  direction = position.getDirection();
         position.setDirection(direction.moveRight());
     }
