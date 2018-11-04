@@ -39,31 +39,19 @@ class MarsRoverShould {
     }
 
     @Nested
-    class WhenMoveIsCalled {
+    class WhenRotateIsCalled {
 
         private final MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), EAST);
 
         @Test
         void with_right_command_turn_right() {
-            rover.move("R");
-            assertThat(rover.isDirection(SOUTH)).isTrue();
-        }
-
-        @Test
-        void with_left_command_turn_left() {
-            rover.move("L");
-            assertThat(rover.isDirection(NORTH)).isTrue();
-        }
-
-        @Test
-        void with_right_command_pattern_turn_right() {
             Command command = new RightCommand(EAST);
             rover.updatePosition(Collections.singletonList(command));
             assertThat(rover.isDirection(SOUTH)).isTrue();
         }
 
         @Test
-        void with_left_command_pattern_turn_left() {
+        void with_left_command_turn_left() {
             Command command = new LeftCommand(EAST);
             rover.updatePosition(Collections.singletonList(command));
             assertThat(rover.isDirection(NORTH)).isTrue();
@@ -72,36 +60,9 @@ class MarsRoverShould {
 
     @Nested
     class WhenMoveForwardIsCalled {
-        @Test
-        void with_forward_to_east_change_x_coordinate_positively() {
-            MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), EAST);
-            rover.move("M");
-            assertThat(rover.isPosition(3, 2)).isTrue();
-        }
 
         @Test
-        void with_forward_to_west_change_x_coordinate_negatively() {
-            MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), WEST);
-            rover.move("M");
-            assertThat(rover.isPosition(1, 2)).isTrue();
-        }
-
-        @Test
-        void with_forward_to_north_change_y_coordinate_positively() {
-            MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), NORTH);
-            rover.move("M");
-            assertThat(rover.isPosition(2, 3)).isTrue();
-        }
-
-        @Test
-        void with_forward_to_south_change_y_coordinate_negatively() {
-            MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), SOUTH);
-            rover.move("M");
-            assertThat(rover.isPosition(2, 1)).isTrue();
-        }
-
-        @Test
-        void with_forward_to_east_pattern_change_x_coordinate_positively() {
+        void with_forward_to_east_command_change_x_coordinate_positively() {
             Coordinate coordinate = new Coordinate(defaultXCoordinate, defaultYCoordinate);
             MarsRover rover = new MarsRover(world, coordinate, EAST);
             Command command = new MoveCommand(coordinate, EAST, world);
@@ -110,7 +71,7 @@ class MarsRoverShould {
         }
 
         @Test
-        void with_forward_to_west_pattern_change_x_coordinate_negatively() {
+        void with_forward_to_west_command_change_x_coordinate_negatively() {
             Coordinate coordinate = new Coordinate(defaultXCoordinate, defaultYCoordinate);
             MarsRover rover = new MarsRover(world, coordinate, WEST);
             Command command = new MoveCommand(coordinate, WEST, world);
@@ -119,7 +80,7 @@ class MarsRoverShould {
         }
 
         @Test
-        void with_forward_to_north_pattern_change_y_coordinate_positively() {
+        void with_forward_to_north_command_change_y_coordinate_positively() {
             Coordinate coordinate = new Coordinate(defaultXCoordinate, defaultYCoordinate);
             MarsRover rover = new MarsRover(world, coordinate, NORTH);
             Command command = new MoveCommand(coordinate, NORTH, world);
@@ -128,7 +89,7 @@ class MarsRoverShould {
         }
 
         @Test
-        void with_forward_to_south_pattern_change_y_coordinate_negatively() {
+        void with_forward_to_south_command_change_y_coordinate_negatively() {
             Coordinate coordinate = new Coordinate(defaultXCoordinate, defaultYCoordinate);
             MarsRover rover = new MarsRover(world, coordinate, SOUTH);
             Command command = new MoveCommand(coordinate, SOUTH, world);
@@ -141,35 +102,7 @@ class MarsRoverShould {
     class WhenMoveForwardIsCalledOnEdges {
 
         @Test
-        void with_forward_to_east_change_x_coordinate_positively() {
-            MarsRover rover = new MarsRover(world, new Coordinate(xUpperLimit, defaultYCoordinate), EAST);
-            rover.move("M");
-            assertThat(rover.isPosition(World.LOWER_LIMIT, 2)).isTrue();
-        }
-
-        @Test
-        void with_forward_to_west_change_x_coordinate_negatively() {
-            MarsRover rover = new MarsRover(world, new Coordinate(World.LOWER_LIMIT, defaultYCoordinate), WEST);
-            rover.move("M");
-            assertThat(rover.isPosition(xUpperLimit, 2)).isTrue();
-        }
-
-        @Test
-        void with_forward_to_north_change_y_coordinate_positively() {
-            MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, world.yUpperLimit()), NORTH);
-            rover.move("M");
-            assertThat(rover.isPosition(2, World.LOWER_LIMIT)).isTrue();
-        }
-
-        @Test
-        void with_forward_to_south_change_y_coordinate_negatively() {
-            MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, World.LOWER_LIMIT), SOUTH);
-            rover.move("M");
-            assertThat(rover.isPosition(2, world.yUpperLimit())).isTrue();
-        }
-
-        @Test
-        void with_forward_to_east_pattern_change_x_coordinate_positively() {
+        void with_forward_to_east_command_wrap_x_coordinate_around_the_world() {
             Coordinate coordinate = new Coordinate(xUpperLimit, defaultYCoordinate);
             MarsRover rover = new MarsRover(world, coordinate, EAST);
             Command command = new MoveCommand(coordinate, EAST, world);
@@ -178,7 +111,7 @@ class MarsRoverShould {
         }
 
         @Test
-        void with_forward_to_west_pattern_change_x_coordinate_negatively() {
+        void with_forward_to_west_command_wrap_x_coordinate_around_the_world() {
             Coordinate coordinate = new Coordinate(World.LOWER_LIMIT, defaultYCoordinate);
             MarsRover rover = new MarsRover(world, coordinate, WEST);
             Command command = new MoveCommand(coordinate, WEST, world);
@@ -187,7 +120,7 @@ class MarsRoverShould {
         }
 
         @Test
-        void with_forward_to_north_pattern_change_y_coordinate_positively() {
+        void with_forward_to_north_command_wrap_y_around_the_world() {
             Coordinate coordinate = new Coordinate(defaultXCoordinate, world.yUpperLimit());
             MarsRover rover = new MarsRover(world, coordinate, NORTH);
             Command command = new MoveCommand(coordinate, NORTH, world);
@@ -196,7 +129,7 @@ class MarsRoverShould {
         }
 
         @Test
-        void with_forward_to_south_pattern_change_y_coordinate_negatively() {
+        void with_forward_to_south_command_wrap_y_coordinate_around_the_world() {
             Coordinate coordinate = new Coordinate(defaultXCoordinate, World.LOWER_LIMIT);
             MarsRover rover = new MarsRover(world, coordinate, SOUTH);
             Command command = new MoveCommand(coordinate, SOUTH, world);
@@ -207,6 +140,7 @@ class MarsRoverShould {
 
     @Nested
     class WhenCallingIsPosition {
+
         @Test
         void return_true_if_positions_is_the_same() {
             MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), SOUTH);
