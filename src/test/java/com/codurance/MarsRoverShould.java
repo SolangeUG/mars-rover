@@ -25,7 +25,8 @@ class MarsRoverShould {
     @Nested
     class WhenCallingIsDirection {
 
-        private final MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), NORTH);
+        private final Coordinate coordinate = new Coordinate(defaultXCoordinate, defaultYCoordinate);
+        private final MarsRover rover = new MarsRover(world, coordinate, NORTH);
 
         @Test
         void return_true_if_direction_is_the_same() {
@@ -41,7 +42,8 @@ class MarsRoverShould {
     @Nested
     class WhenRotateIsCalled {
 
-        private final MarsRover rover = new MarsRover(world, new Coordinate(defaultXCoordinate, defaultYCoordinate), EAST);
+        private final Coordinate coordinate = new Coordinate(defaultXCoordinate, defaultYCoordinate);
+        private final MarsRover rover = new MarsRover(world, coordinate, EAST);
 
         @Test
         void with_right_command_turn_right() {
@@ -61,9 +63,10 @@ class MarsRoverShould {
     @Nested
     class WhenMoveForwardIsCalled {
 
+        private Coordinate coordinate = new Coordinate(defaultXCoordinate, defaultYCoordinate);
+
         @Test
         void with_forward_to_east_command_change_x_coordinate_positively() {
-            Coordinate coordinate = new Coordinate(defaultXCoordinate, defaultYCoordinate);
             Position position = new Position(world, coordinate, EAST);
             MarsRover rover = new MarsRover(world, coordinate, EAST);
             Command command = new MoveCommand(position);
@@ -75,7 +78,6 @@ class MarsRoverShould {
 
         @Test
         void with_forward_to_west_command_change_x_coordinate_negatively() {
-            Coordinate coordinate = new Coordinate(defaultXCoordinate, defaultYCoordinate);
             Position position = new Position(world, coordinate, WEST);
             MarsRover rover = new MarsRover(world, coordinate, WEST);
             Command command = new MoveCommand(position);
@@ -87,7 +89,6 @@ class MarsRoverShould {
 
         @Test
         void with_forward_to_north_command_change_y_coordinate_positively() {
-            Coordinate coordinate = new Coordinate(defaultXCoordinate, defaultYCoordinate);
             Position position = new Position(world, coordinate, NORTH);
             MarsRover rover = new MarsRover(world, coordinate, NORTH);
             Command command = new MoveCommand(position);
@@ -99,7 +100,6 @@ class MarsRoverShould {
 
         @Test
         void with_forward_to_south_command_change_y_coordinate_negatively() {
-            Coordinate coordinate = new Coordinate(defaultXCoordinate, defaultYCoordinate);
             Position position = new Position(world, coordinate, SOUTH);
             MarsRover rover = new MarsRover(world, coordinate, SOUTH);
             Command command = new MoveCommand(position);
